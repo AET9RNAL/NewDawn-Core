@@ -180,6 +180,39 @@ public static ItemStack getIUBaseMachine(String name, int count) {
         if (!s.isEmpty()) s.setCount(Math.max(1, count));
         return s;
     }
+
+    public static ItemStack getIUPlate(int n) {
+        ItemStack s = new ItemStack(IUItem.plate, 1,
+                ItemPlate.ItemPlateTypes.getFromID(n).getId());
+        return s;
+    }
+    public static ItemStack getIUPlate(int n, int count) {
+        ItemStack s = getIUPlate(n);
+        if (!s.isEmpty()) s.setCount(Math.max(1, count));
+        return s;
+    }
+
+    public static ItemStack getIUDoublePlate(int n) {
+        ItemStack s = new ItemStack(IUItem.plate, 1,
+                ItemDoublePlate.ItemDoublePlateTypes.getFromID(n).getId());
+        return s;
+    }
+    public static ItemStack getIUDoublePlate(int n, int count) {
+        ItemStack s = getIUDoublePlate(n);
+        if (!s.isEmpty()) s.setCount(Math.max(1, count));
+        return s;
+    }
+
+    public static ItemStack getIUAlloysPlate(int n) {
+        ItemStack s = new ItemStack(IUItem.plate, 1,
+                ItemAlloysPlate.Types.getFromID(n).getId());
+        return s;
+    }
+    public static ItemStack getIUAlloysPlate(int n, int count) {
+        ItemStack s = getIUAlloysPlate(n);
+        if (!s.isEmpty()) s.setCount(Math.max(1, count));
+        return s;
+    }
     /** Fluent builder for a single Digital Assembly Table recipe (with ore expansion). */
     public static final class DATRecipe {
         // Each slot can be: ItemStack, String (ore key), List<ItemStack>, or null/EMPTY
