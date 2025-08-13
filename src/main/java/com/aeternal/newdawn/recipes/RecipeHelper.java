@@ -3,12 +3,15 @@ package com.aeternal.newdawn.recipes;
 import com.denfop.IUItem;
 import com.denfop.blocks.BlockResource;
 import com.denfop.blocks.FluidName;
-import com.denfop.blocks.IUFluid;
 import com.denfop.blocks.mechanism.BlockBaseMachine3;
 import com.denfop.items.IUItemBase;
 import com.denfop.items.resource.ItemCraftingElements;
+import com.denfop.items.resource.ItemDoublePlate;
 import com.denfop.items.resource.ItemGear;
+import com.denfop.items.resource.ItemPlate;
+import com.denfop.items.resource.alloys.ItemAlloysDoublePlate;
 import com.denfop.items.resource.alloys.ItemAlloysGear;
+import com.denfop.items.resource.alloys.ItemAlloysPlate;
 import mekanism.api.gas.Gas;
 import mekanism.api.gas.GasRegistry;
 import mekanism.api.gas.GasStack;
@@ -29,23 +32,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * General-purpose helpers for Mekanism's Digital Assembly Table recipes.
- * - Accepts ItemStack, null/EMPTY, or ore dict key String per slot.
- * - Expands ore dict keys into all variants (cross-product if multiple slots are ores).
- * - Pads to 9 slots automatically.
- *
- * Usage example (register during postInit or later):
- *
- *   new RecipeHelper.DATRecipe()
- *       .inputs("ingotSteel", new ItemStack(Items.DIAMOND), null, null, null, null, null, null, null)
- *       .fluidIn(new FluidStack(FluidRegistry.WATER, 1000))
- *       .gasIn(new GasStack(MyGases.OXYGEN, 500))
- *       .output(new ItemStack(MyModItems.ASSEMBLED_CORE))
- *       .powerPerTick(120)
- *       .duration(2000)
- *       .register();
- */
+
 public final class RecipeHelper {
     private RecipeHelper() {}
 
@@ -213,6 +200,37 @@ public static ItemStack getIUBaseMachine(String name, int count) {
         if (!s.isEmpty()) s.setCount(Math.max(1, count));
         return s;
     }
+
+    public static ItemStack getIUAlloysDoublePlate(int n) {
+        ItemStack s = new ItemStack(IUItem.plate, 1,
+                ItemAlloysDoublePlate.Types.getFromID(n).getId());
+        return s;
+    }
+    public static ItemStack getIUAlloysDoublePlate(int n, int count) {
+        ItemStack s = getIUAlloysDoublePlate(n);
+        if (!s.isEmpty()) s.setCount(Math.max(1, count));
+        return s;
+    }
+
+    /**
+     * General-purpose helpers for Mekanism's Digital Assembly Table recipes.
+     * - Accepts ItemStack, null/EMPTY, or ore dict key String per slot.
+     * - Expands ore dict keys into all variants (cross-product if multiple slots are ores).
+     * - Pads to 9 slots automatically.
+     *
+     * Usage example (register during postInit or later):
+     *
+     *   new RecipeHelper.DATRecipe()
+     *       .inputs("ingotSteel", new ItemStack(Items.DIAMOND), null, null, null, null, null, null, null)
+     *       .fluidIn(new FluidStack(FluidRegistry.WATER, 1000))
+     *       .gasIn(new GasStack(MyGases.OXYGEN, 500))
+     *       .output(new ItemStack(MyModItems.ASSEMBLED_CORE))
+     *       .powerPerTick(120)
+     *       .duration(2000)
+     *       .register();
+     */
+
+
     /** Fluent builder for a single Digital Assembly Table recipe (with ore expansion). */
     public static final class DATRecipe {
         // Each slot can be: ItemStack, String (ore key), List<ItemStack>, or null/EMPTY

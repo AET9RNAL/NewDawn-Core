@@ -1,13 +1,7 @@
 package com.aeternal.newdawn.recipes;
-import com.denfop.IUItem;
 import com.denfop.blocks.FluidName;
-import com.denfop.blocks.mechanism.BlockBaseMachine3;
-import com.denfop.items.resource.ItemCraftingElements;
 import mekanism.api.gas.GasStack;
 import mekanism.common.MekanismFluids;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -41,8 +35,8 @@ public class MekanismRecipes {
         FluidStack lavaOut = new FluidStack(FluidRegistry.LAVA,  500);
 
 
-        FluidStack test = new FluidStack(FluidName.fluidcreosote.getInstance(),1);
-        GasStack test1 = new GasStack(MekanismFluids.Water,1);
+        FluidStack test = new FluidStack(FluidName.fluidethanol.getInstance(),1);
+        GasStack test1 = new GasStack(MekanismFluids.SpentNuclearWaste,1);
 
         //Space Research table
         new RecipeHelper.DATRecipe()
@@ -51,7 +45,7 @@ public class MekanismRecipes {
                         getIUElement(683,1), getIUBr("machine",1), getIUElement(678,1),
                         getIUElement(274,4), getIUGear(4,3), getIUElement(274,4))
                 .fluidIn(getIUfluid("fluidindustrialoil",5000))
-                .gasIn(getMekGas("LiquidOsmium", 5000))
+                .gasIn(getMekGas("Hydrogen", 10000))
                 .output(getIUBaseMachine("research_table_space",1))
                 .fluidOut(getIUfluid("fluidcreosote",1000))
                 .gasOut(getMekGas("Water",1000))
@@ -70,7 +64,7 @@ public class MekanismRecipes {
                 .output(getIUBaseMachine("rover_assembler",1))
                 .fluidOut(getIUfluid("fluidnitricoxide",3000))
                 .gasOut(getMekGas("Oxygen",1000))
-                .powerPerTick(6000)        //  EF/RF
+                .powerPerTick(6000)        // 9M EF/RF 36M
                 .duration(6000)           // 300s @ 20tps
                 .register();
 
@@ -84,13 +78,41 @@ public class MekanismRecipes {
                 .output(getIUBaseMachine("probe_assembler", 1))
                 .fluidOut(getIUfluid("fluidnitricoxide",5000))   // leftover
                 .gasOut(getMekGas("Oxygen",1000))          // byproduct
-                .powerPerTick(6000)
-                .duration(6000)
+                .powerPerTick(10000)        // 18M EF/RF 72M
+                .duration(7200)        // 360s @ 20tps
                 .register();
 
+        //Rocket Assembler
+        new RecipeHelper.DATRecipe()
+                .inputs(
+                        getIUDoublePlate(26,4), getIUElement(52,4), getIUDoublePlate(26,4),
+                        getIUElement(684,2), getIUBr("advanced_machine",3), getIUElement(243,2),
+                        getIUDoublePlate(26,4), getIUItemBase("motors_with_improved_bearings_", 2), getIUDoublePlate(26,4))
+                .fluidIn(getIUfluid("fluidmotoroil",60000))
+                .gasIn(getMekGas("FusionFuel",30000))
+                .output(getIUBaseMachine("rocket_assembler",1))
+                .fluidOut(getIUfluid("fluidblackoil",3000))
+                .gasOut(getMekGas("SpentNuclearWaste",3000))
+                .powerPerTick(12500)        // 30M EF/RF 120M
+                .duration(9600)           // 480s @ 20tps
+                .register();
 
+        //Satellite Assembler
+        new RecipeHelper.DATRecipe()
+                .inputs(
+                        getIUAlloysDoublePlate(22,4), getIUElement(52,4), getIUAlloysDoublePlate(10,8),
+                        getIUElement(688,2), getIUBr("advanced_machine",3), getIUElement(243,2),
+                        getIUAlloysDoublePlate(8,8), getIUItemBase("motors_with_improved_bearings_", 4), getIUAlloysDoublePlate(22,4))
+                .fluidIn(getIUfluid("fluidethanol",60000))
+                .gasIn(getMekGas("FusionFuel",5000))
+                .output(getIUBaseMachine("satellite_assembler",1))
+                .fluidOut(new FluidStack(FluidRegistry.WATER, 12000))
+                .gasOut(getMekGas("SpentNuclearWaste",500))
+                .powerPerTick(12500)        // 30M EF/RF 120M
+                .duration(9600)           // 480s @ 20tps
+                .register();
 
-
+        //Launch Pad
         new RecipeHelper.DATRecipe()
                 .inputs(
                         getIUElement(501,4), getIUItemBase("motors_with_improved_bearings_", 1), getIUElement(501,4),
