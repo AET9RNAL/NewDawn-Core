@@ -158,7 +158,7 @@ public static ItemStack getIUBaseMachine(String name, int count) {
     }
 
     public static ItemStack getIUAlloyGear(int n) {
-        ItemStack s = new ItemStack(IUItem.gear, 1,
+        ItemStack s = new ItemStack(IUItem.alloygear, 1,
                 ItemAlloysGear.Types.getFromID(n).getId());
         return s;
     }
@@ -180,7 +180,7 @@ public static ItemStack getIUBaseMachine(String name, int count) {
     }
 
     public static ItemStack getIUDoublePlate(int n) {
-        ItemStack s = new ItemStack(IUItem.plate, 1,
+        ItemStack s = new ItemStack(IUItem.doubleplate, 1,
                 ItemDoublePlate.ItemDoublePlateTypes.getFromID(n).getId());
         return s;
     }
@@ -191,7 +191,7 @@ public static ItemStack getIUBaseMachine(String name, int count) {
     }
 
     public static ItemStack getIUAlloysPlate(int n) {
-        ItemStack s = new ItemStack(IUItem.plate, 1,
+        ItemStack s = new ItemStack(IUItem.alloysplate, 1,
                 ItemAlloysPlate.Types.getFromID(n).getId());
         return s;
     }
@@ -202,7 +202,7 @@ public static ItemStack getIUBaseMachine(String name, int count) {
     }
 
     public static ItemStack getIUAlloysDoublePlate(int n) {
-        ItemStack s = new ItemStack(IUItem.plate, 1,
+        ItemStack s = new ItemStack(IUItem.alloysdoubleplate, 1,
                 ItemAlloysDoublePlate.Types.getFromID(n).getId());
         return s;
     }
