@@ -7,6 +7,8 @@ import com.denfop.blocks.IUFluid;
 import com.denfop.blocks.mechanism.BlockBaseMachine3;
 import com.denfop.items.IUItemBase;
 import com.denfop.items.resource.ItemCraftingElements;
+import com.denfop.items.resource.ItemGear;
+import com.denfop.items.resource.alloys.ItemAlloysGear;
 import mekanism.api.gas.Gas;
 import mekanism.api.gas.GasRegistry;
 import mekanism.api.gas.GasStack;

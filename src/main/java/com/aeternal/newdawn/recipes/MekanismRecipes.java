@@ -41,9 +41,40 @@ public class MekanismRecipes {
         FluidStack lavaOut = new FluidStack(FluidRegistry.LAVA,  500);
 
 
-        FluidStack test = new FluidStack(FluidName.fluidcryogen.getInstance(),1);
+        FluidStack test = new FluidStack(FluidName.fluidcreosote.getInstance(),1);
         GasStack test1 = new GasStack(MekanismFluids.Water,1);
 
+        //Space Research table
+        new RecipeHelper.DATRecipe()
+                .inputs(
+                        getIUElement(274,4), getIUElement(44,1), getIUElement(274,4),
+                        getIUElement(683,1), getIUBr("machine",1), getIUElement(678,1),
+                        getIUElement(274,4), getIUGear(4,3), getIUElement(274,4))
+                .fluidIn(getIUfluid("fluidindustrialoil",5000))
+                .gasIn(getMekGas("LiquidOsmium", 5000))
+                .output(getIUBaseMachine("research_table_space",1))
+                .fluidOut(getIUfluid("fluidcreosote",1000))
+                .gasOut(getMekGas("Water",1000))
+                .powerPerTick(16666)        // 5M EF/RF 20M RF
+                .duration(1200)           // 60s @ 20tps
+                .register();
+
+        //Rover Assembler
+        new RecipeHelper.DATRecipe()
+                .inputs(
+                        getIUElement(501,4), getIUElement(52,4), getIUElement(501,4),
+                        getIUElement(681,2), getIUBr("advanced_machine",3), getIUElement(243,2),
+                        getIUElement(501,4), getIUItemBase("motors_with_improved_bearings_", 2), getIUElement(501,4))
+                .fluidIn(getIUfluid("fluiddimethylhydrazine",15000))
+                .gasIn(getMekGas("Lithium",5000))
+                .output(getIUBaseMachine("rover_assembler",1))
+                .fluidOut(getIUfluid("fluidnitricoxide",3000))
+                .gasOut(getMekGas("Oxygen",1000))
+                .powerPerTick(6000)        //  EF/RF
+                .duration(6000)           // 300s @ 20tps
+                .register();
+
+        //Probe Assembler
         new RecipeHelper.DATRecipe()
                 .inputs(getIUElement(501,4), getIUElement(52,4), getIUElement(501,4),
                         getIUElement(677,2), getIUBr("advanced_machine",3), getIUElement(243,2),
@@ -74,33 +105,9 @@ public class MekanismRecipes {
                 .duration(6000)           // 300s @ 20tps
                 .register();
 
-        new RecipeHelper.DATRecipe()
-                .inputs(
-                        slot1, slot2, slot3,
-                        slot4, slot5, slot6,
-                        slot7, slot8, slot9)
-                .fluidIn()
-                .gasIn()
-                .output()
-                .fluidOut()
-                .gasOut()
-                .powerPerTick()        //  EF/RF
-                .duration()           // s @ 20tps
-                .register();
 
-        new RecipeHelper.DATRecipe()
-                .inputs(
-                        slot1, slot2, slot3,
-                        slot4, slot5, slot6,
-                        slot7, slot8, slot9)
-                .fluidIn()
-                .gasIn()
-                .output()
-                .fluidOut()
-                .gasOut()
-                .powerPerTick()        //  EF/RF
-                .duration()           // s @ 20tps
-                .register();
+
+
     }
 
     private static @NotNull ItemStack getIuElement() {
