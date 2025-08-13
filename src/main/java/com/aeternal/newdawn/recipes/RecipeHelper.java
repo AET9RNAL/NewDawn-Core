@@ -156,6 +156,28 @@ public static ItemStack getIUBaseMachine(String name, int count) {
         if (!s.isEmpty()) s.setCount(Math.max(1, count));
         return s;
     }
+
+    public static ItemStack getIUGear(int n) {
+        ItemStack s = new ItemStack(IUItem.gear, 1,
+                ItemGear.Types.getFromID(n).getId());
+        return s;
+    }
+    public static ItemStack getIUGear(int n, int count) {
+        ItemStack s = getIUGear(n);
+        if (!s.isEmpty()) s.setCount(Math.max(1, count));
+        return s;
+    }
+
+    public static ItemStack getIUAlloyGear(int n) {
+        ItemStack s = new ItemStack(IUItem.gear, 1,
+                ItemAlloysGear.Types.getFromID(n).getId());
+        return s;
+    }
+    public static ItemStack getIUAlloyGear(int n, int count) {
+        ItemStack s = getIUGear(n);
+        if (!s.isEmpty()) s.setCount(Math.max(1, count));
+        return s;
+    }
     /** Fluent builder for a single Digital Assembly Table recipe (with ore expansion). */
     public static final class DATRecipe {
         // Each slot can be: ItemStack, String (ore key), List<ItemStack>, or null/EMPTY
