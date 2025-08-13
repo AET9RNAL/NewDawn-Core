@@ -1,0 +1,21 @@
+[
+  {
+    "authorList" : [
+      "AETERNAL"
+    ],
+    "credits" : "NewDawn mod",
+    "dependants" : [],
+    "dependencies" : [],
+    "description" : "",
+    "logoFile" : "",
+    "mcversion" : "1.12.2",
+    "modid" : "newdawn",
+    "name" : "NewDawn",
+    "parent" : "",
+    "requiredMods" : [],
+    "screenshots" : [],
+    "updateUrl" : "",
+    "url" : "",
+    "version" : "1.0.0"
+  }
+]
